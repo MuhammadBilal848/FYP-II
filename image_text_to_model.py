@@ -1,25 +1,19 @@
 import os
-from langchain.llms import OpenAI
-from langchain import PromptTemplate
-from langchain.chains import LLMChain
-from constant import openai_key
-
+from openai import OpenAI
+from constants import openai_key
 os.environ['OPENAI_API_KEY'] = openai_key
 
+client = OpenAI()
 
 
-def gpt_qs(subject,notes):
-    ''' The function takes subject and notes as params & generates questions '''
+def text_to_model(subject , text_notes):
+    '''Takes subject and text notes in terms of text and text & returns bullets and summary'''
+    completion = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": '''You are a course notes summarizer. You get a subject and broken text in terms of notes that has been taken 
+        in the class, you have to write bullets by reading the text and in the end summarize all the bullets in a small paragraph.'''},
+        {"role": "user", "content": f"Subject is '{subject}' and notes are '{text_notes}"}]
+    )
 
-    llm = OpenAI(temperature=0.8)
-
-    questions = PromptTemplate(
-        input_variables = ['subject','notes'] ,
-        template = '''Write 10 difficult questions for an interviewee about these skills with respective experiences:
-        "{subject}" ,
-        who is applying for "{notes}". You must return questions and nothing else. Make sure to not ask question starting from "how have you used...." , just ask technical questions. Make sure to not include anything other than questions.''')
-
-    question = LLMChain(llm=llm , prompt=questions,verbose=True) 
-    response = question.run(subject = subject,notes = notes)
-    with open('questions.txt', 'a') as file:
-        file.write(response)
+    return completion.choices[0].message.content

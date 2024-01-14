@@ -2,4 +2,4 @@ uvicorn
 fastapi
 python-multipart
 langchain==0.0.216
-openai
+openai==1.2.0
