@@ -7,5 +7,5 @@
 4. Run app.py:
                             python app.py
 
-5. NO NEED TO USE POSTMAN, click on the url and type /docs after localhost link  "http://127.0.0.1:8000/docs"
+5. NO NEED TO USE POSTMAN SHIT, click on the url and type /docs after localhost link  "http://127.0.0.1:8000/docs"
                             HAVE FUNNNNNNNNNNNNNN!!!!!!!!!!!!!!!!!!
