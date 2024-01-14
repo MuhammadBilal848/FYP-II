@@ -1,27 +1,46 @@
 import uvicorn
-from fastapi import FastAPI , Path
+from fastapi import FastAPI , Path ,UploadFile ,File,Form
 from typing import Optional
 from pydantic import BaseModel
 
 app = FastAPI()
 
 
-# class Notes(BaseModel):
-#     subject : str
-#     image : 
+class Notes(BaseModel):
+    subject : str
+    image : UploadFile
 
-@app.post("/post-notes/")
-async def create_upload_file(file: UploadFile):
+class TextNotes(BaseModel):
+    subject : Optional[str]
+    text : Optional[str]
 
+db = []
+
+@app.post("/post-image_notes/")
+async def image_notes(*,file: UploadFile = File(...), subject : str ):
     contents = await file.read() 
-
     db.append(file)
-
+    db.append(subject)
     with open(file.filename, "wb") as f:
         f.write(contents)
+    return {"filename": file.filename , 'subject':subject}
 
-    return {"filename": file.filename}
 
+@app.post("/post-text_notes/")
+async def text_notes(textnotes : TextNotes ):
+
+    # db.append(textnotes)
+    content = f"Subject: {textnotes.subject}\n\nText: {textnotes.text}"
+    print(content)
+    # filename = f"{textnotes.subject}_{textnotes.text[:10]}.txt"
+    # with open(filename, "w") as f:
+    #     f.write()
+
+    return {"filename": content, "subject": textnotes.subject, "text": textnotes.text}
+
+@app.get("/get-notes/")
+def get_notes():
+    return db
 
 
 

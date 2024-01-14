@@ -1,3 +1,3 @@
 1. LIKHO : python3 -m venv fyp2
-2. GHUSO: fyp2\Scripts\activate
+2. GHUSO: fyp2\Scripts\activate OR source fyp2/Scripts/activate
 3. KARO: pip install -r requirements.txt
