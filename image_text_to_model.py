@@ -6,11 +6,23 @@ os.environ['OPENAI_API_KEY'] = openai_key
 client = OpenAI()
 
 
-def text_transformer(dic : dict):
+def pre_text_transformer(dic : dict):
     b = ''
     for a in range(0,len(dic['ops'])):
         b += dic['ops'][a]['insert']
     return b.replace('\n',' ')
+
+def post_text_transformer(text : str):
+    return  {
+          "ops": [
+                {
+                    "insert": f"{text}",
+                    "attributes": {
+                        "color": "#bdc1c6"
+                    }
+                }
+            ]
+        }
 
 
 def text_to_model(subject , text_notes):
@@ -52,3 +64,15 @@ def text_to_model(subject , text_notes):
 #             ]
 #         })
 # )
+
+
+# {
+#           "ops": [
+#                 {
+#                     "insert": "Data science is an interdisciplinary academic field that uses statistics, scientific computing, scientific methods, processes, algorithms and systems to extract or extrapolate knowledge and insights from potentially noisy, structured, or unstructured data.",
+#                     "attributes": {
+#                         "color": "#bdc1c6"
+#                     }
+#                 }
+#             ]
+#         }

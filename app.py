@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI , Path ,UploadFile ,File,Form
 from typing import Optional
 from pydantic import BaseModel
-from image_text_to_model import text_to_model , text_transformer
+from image_text_to_model import text_to_model , pre_text_transformer,post_text_transformer
 
 app = FastAPI()
 
@@ -29,9 +29,9 @@ async def image_notes(*,file: UploadFile = File(...), subject : str ):
 
 @app.post("/post-text_notes/")
 async def text_notes(textnotes : TextNotes):
-    response = text_to_model(textnotes.subject , text_transformer(textnotes.text))
+    response = text_to_model(textnotes.subject , pre_text_transformer(textnotes.text))
     # return {'Subject':textnotes.subject , 'Data': textnotes.text}
-    return response
+    return post_text_transformer(response)
 
 @app.get("/")
 def get_notes():

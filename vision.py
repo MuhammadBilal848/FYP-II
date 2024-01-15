@@ -1,86 +1,72 @@
-import os
-import io
-from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes,VisualFeatureTypes
-import requests#pipinstallrequests
-from PIL import Image ,ImageDraw ,ImageFont
+from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
+from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
+from msrest.authentication import CognitiveServicesCredentials
+import time , json
+
+credential = json.load(open('credentials.json'))
+
+subscription_key = credential['API_KEY']
+endpoint = credential['ENDPOINT']
+
+computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
+
+# Replace the file_path with the path to your locally saved image
+file_path = '2.jpg'
+
+with open(file_path, "rb") as image_stream:
+    read_response = computervision_client.read_in_stream(image_stream,  raw=True)
+
+read_operation_location = read_response.headers["Operation-Location"]
+operation_id = read_operation_location.split("/")[-1]
+while True:
+    read_result = computervision_client.get_read_result(operation_id)
+    if read_result.status not in ['notStarted', 'running']:
+        break
+    time.sleep(1)
+
+if read_result.status == OperationStatusCodes.succeeded:
+    for text_result in read_result.analyze_result.read_results:
+        for line in text_result.lines:
+            print(line.text)
 
 
 
 
 
 
+# from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+# from azure.cognitiveservices.vision.computervision.models import OperationStatusCodes
+# from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
+# from msrest.authentication import CognitiveServicesCredentials
 
+# from array import array
+# import os
+# from PIL import Image
+# import sys
+# import time
+# import json
 
+# credential = json.load(open('credentials.json'))
 
+# subscription_key = credential['API_KEY']
+# endpoint = credential['ENDPOINT']
 
+# computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
+# read_image_url = "https://static.skillshare.com/uploads/project/197455/cover_1242_c8db5284ea9adb59c864802834e32519.jpg"
 
+# read_response = computervision_client.read(read_image_url,  raw=True)
 
+# read_operation_location = read_response.headers["Operation-Location"]
+# operation_id = read_operation_location.split("/")[-1]
+# while True:
+#     read_result = computervision_client.get_read_result(operation_id)
+#     if read_result.status not in ['notStarted', 'running']:
+#         break
+#     time.sleep(1)
 
-
-
-
-
-
-
-
-
-
-
-
-# 
-# import os,io
-# from google.cloud import vision
-# # from google.cloud.vision_v1 import types
-
-
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'propane-sphinx-411310-c77962b133eb.json'
-
-# client = vision.ImageAnnotatorClient()
-
-# with io.open('Handwritten Notes/1.jpg','rb') as img_file:
-#     content = img_file.read()
-
-# image = vision.Image(content = content)
- 
-# response = client.document_text_detection(image = image)
-# print(response)
-
-
-
-
-
-# # def detect_text(path):
-# #     """Detects text in the file."""
-# #     from google.cloud import vision
-
-# #     client = vision.ImageAnnotatorClient()
-
-# #     with open(path, "rb") as image_file:
-# #         content = image_file.read()
-
-# #     image = vision.Image(content=content)
-
-# #     response = client.text_detection(image=image)
-# #     texts = response.text_annotations
-# #     print("Texts:")
-
-# #     for text in texts:
-# #         print(f'\n"{text.description}"')
-
-# #         vertices = [
-# #             f"({vertex.x},{vertex.y})" for vertex in text.bounding_poly.vertices
-# #         ]
-
-# #         print("bounds: {}".format(",".join(vertices)))
-
-# #     if response.error.message:
-# #         raise Exception(
-# #             "{}\nFor more info on error messages, check: "
-# #             "https://cloud.google.com/apis/design/errors".format(response.error.message)
-# #         )
-
-
-# # detect_text('Handwritten Notes/1.jpg')
+# if read_result.status == OperationStatusCodes.succeeded:
+#     for text_result in read_result.analyze_result.read_results:
+#         for line in text_result.lines:
+#             print(line.text)
