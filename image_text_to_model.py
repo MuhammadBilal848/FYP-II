@@ -18,8 +18,8 @@ def text_to_model(subject , text_notes):
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": '''You are a course notes summarizer. You get a subject and broken text in terms of notes that has been taken 
-        in the class, you have to write the summary in format of quill.js delta , make sure that the response has proper headings and bullets.'''},
+        {"role": "system", "content": '''You are a course notes summarizer. You get a subject and broken text in terms of notes that has been
+          taken in the class, you have to write numbered bullets by reading the text and in the end summarize all the numbered bullets in a small paragraph.'''},
         {"role": "user", "content": f"Subject is '{subject}' and notes are '{text_notes}"}]
     )
 
