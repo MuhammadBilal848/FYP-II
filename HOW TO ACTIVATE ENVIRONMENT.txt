@@ -1,7 +1,7 @@
 1.Mmake environment using: 
                             conda create -p fyp2 python==3.9 -y
 2. Activate environment:
-                            conda activate f:\FYP-II\fyp2
+                            conda activate f:\FYP-II\fyp2 OR conda activate fyp2/
 3. Install dependencies:
                             pip install -r requirements.txt
 4. Run app.py:

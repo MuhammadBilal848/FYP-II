@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "propane-sphinx-411310",
+  "private_key_id": "c77962b133eb3008054f2b4de3c565b68c80f763",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCclPE/frZk/n1Y\nxYM+G3csvmJ1pyCmI2Z6c7AsvTB6HCvHXeLM9kbj/k8C2LFBvRHfVd8dtQ3FQr0J\n/jtnTvKH3Tu7LxfEpWL2JRcRdagHCMYig2C8H1ObCLYCRpoFlg321Fy3GFQ/a/j+\nmcp+r64uQPbLbSuzYJffdQIbhrtZWz3iiBF5PaXnDCVnMuaScVLXL8k0XaksuakH\n9EPwEWdtpf9d0r/iqrwIKVOh9pzGAbpOwvSm/3l8Qx6+RSNusy2SZNHc+2fFQjap\nQb405HQsEjCGwpw6tnr9Oxke7Zqj/b+5ASL3rMyrzrCvZCSCzsnpc6ONtQTYW+5p\nhEqKfdKPAgMBAAECggEARRWF10Dd0nNh9G+4dweBLjGVmVkyk3qc9Tvjp+mU4Ntb\nCWxH66xhHKiQTa4zjtCPeR0XArFmMPlAFI+hv/PaF82pU+30K6PYpMc6hU6G4wug\n94tFe9rKdWWDgD+MJxjMcnHBslq+mPjXc+WArSJv1CJ/gMNa+5qLh2DFnEV2lXZ2\nQij1E9yTX6lbKxJDfuZggy4+Ab7zsyo4O7RJxn9mC6luwWkuHhrKQVtwGZ+PNeN8\nmMEZsi5M2AdEezCXGHrELy0Drwy+6iyQ6x1T5EeONkmkEkjbRj65JYhyRyX0FCPw\npcP5KceCBDQiWkQrP6aF7K0uNtHwT5iY5GdzBivteQKBgQDUC9DYYYuGR9jCy9Ye\nIiY6a3ek9AQMOj002kJgBiEiARVkHqJE/pYHNofYI4Ul2bCyyVvu0Vt3fg0t4v32\nGTXQh3JDl/AWZNt1+uvNgogrL24gcTAZCMgdRC27ClpdrJucpVaniBPjTsXY9s4u\n0vaVjL9Y7O7BryJIIh8oYN6y9QKBgQC9CewzUlg9hur5PvsWiMQBJhReAw6wxO0z\nOISk/Bq+4p0amzjyvR4GohKC7itELfWV9GSel0kFD/F/naObAIhKrBSAXnxHzDlu\nOxiMvCPCgMf8v7GTGFgr1vsT6LZyV+5VqyT69uZkA5X/ntE/Tj7EhcHWoQVgx71e\nPNavY4Gk8wKBgCAI7PNTwU13G0NKoj2JMTdQNxIfn2Dth4OtmauCIY1Olpm6mw9L\nWwUZ8unva9UtDynji9UHogbqbzlIes+sPVoUrGmT0bzAXftz/h3dI49KqhuSng6a\nKglp3HLOfJp8UkIXJIFI6KBFrVQ67Slby88KJXpcyTFPsSEuroBeKiblAoGBAIL4\nBfJEoaf2+oK2lMU2+f0FweSkX6Auv1vWU2fu1iTb4haV5i2ewte7n/GgSs+Qu+4p\nhTCvBcMBGcLdl4UDKGn7sLSDQb2Ii12IieivTGMsT+IXeVK88hFlf0x61TSBITmv\nOg650kMGjPytrrEaZ7hGJ1ao9o3ntJY+tkqLOT3rAoGAbKKAJ+csbqHKNYfoRYmR\nbfsyNe3UpHL2PkY0oFBHbALxOA4O2iqE5+DZRlC5CtopT/HpmT+L0dpN0UGb5AyV\nAZiGyv5vj7423785dkZTErPRBrgSXaaIL1vydnHptufyF4bTUgJSgLYeiOQwpQft\nMJwb71EntHfS2BVGWO/siHU=\n-----END PRIVATE KEY-----\n",
+  "client_email": "learnease@propane-sphinx-411310.iam.gserviceaccount.com",
+  "client_id": "103537222969231857439",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/learnease%40propane-sphinx-411310.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
