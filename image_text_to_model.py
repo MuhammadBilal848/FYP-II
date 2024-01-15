@@ -6,6 +6,13 @@ os.environ['OPENAI_API_KEY'] = openai_key
 client = OpenAI()
 
 
+def text_transformer(dic : dict):
+    b = ''
+    for a in range(0,len(dic['ops'])):
+        b += dic['ops'][a]['insert']
+    return b.replace('\n',' ')
+
+
 def text_to_model(subject , text_notes):
     '''Takes subject and text notes in terms of text and text & returns bullets and summary'''
     completion = client.chat.completions.create(
@@ -19,4 +26,29 @@ def text_to_model(subject , text_notes):
     return completion.choices[0].message.content
 
 
-print(text_to_model('DSA','-LinkedList , -queue , complexity , = tim sort'))
+# print(text_to_model('DSA','-LinkedList , -queue , complexity , = tim sort'))
+
+# print(text_transformer({
+#             "ops": [
+#                 {
+#                     "insert": "Data science is an interdisciplinary academic field that uses statistics, scientific computing, scientific methods, processes, algorithms and systems to extract or extrapolate knowledge and insights from potentially noisy, structured, or unstructured data.",
+#                     "attributes": {
+#                         "color": "#bdc1c6"
+#                     }
+#                 },
+#                 {
+#                     "insert": "\n\n"
+#                 },
+#                 {
+#                     "insert": "dadada bilalda dadad AAAAAAAAAAAAAAAAAAAAA.",
+#                     "attributes": {
+#                         "background": "#202124",
+#                         "color": "#bdc1c6"
+#                     }
+#                 },
+#                 {
+#                     "insert": "\n"
+#                 }
+#             ]
+#         })
+# )

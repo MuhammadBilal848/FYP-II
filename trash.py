@@ -22,8 +22,10 @@ l = {
             ]
         }
 
-b = ''
-for a in range(0,len(l['ops'])):
-    print(l['ops'][a]['insert'])
-    b += l['ops'][a]['insert']
-print(b.replace('\n',' '))
+l = str(l)
+
+# b = ''
+# for a in range(0,len(l['ops'])):
+#     print(l['ops'][a]['insert'])
+#     b += l['ops'][a]['insert']
+# print(b.replace('\n',' '))
