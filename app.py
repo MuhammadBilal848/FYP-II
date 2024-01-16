@@ -1,8 +1,9 @@
 import uvicorn
 from fastapi import FastAPI , Path ,UploadFile ,File,Form
-from typing import Optional
 from pydantic import BaseModel
+from typing import Optional
 from image_text_to_model import text_to_model , pre_text_transformer,post_text_transformer
+from vision import read_text_from_image
 
 app = FastAPI()
 
@@ -20,12 +21,22 @@ db = []
 @app.post("/post-image_notes/")
 async def image_notes(*,file: UploadFile = File(...), subject : str ):
     contents = await file.read() 
-    
     db.append(file)
     db.append(subject)
-    with open(file.filename, "wb") as f:
+    with open(f'Saved Notes/{file.filename}', "wb") as f:
         f.write(contents)
-    return {"filename": file.filename , 'subject':subject}
+    response = read_text_from_image(f'Saved Notes/{file.filename}')
+    response = text_to_model(subject , pre_text_transformer({
+    "ops": [
+        {
+            "insert": f"{response}",
+            "attributes": {
+                "color": "#bdc1c6"
+            }
+        }
+    ]
+}))
+    return post_text_transformer(response)
 
 
 @app.post("/post-text_notes/")
