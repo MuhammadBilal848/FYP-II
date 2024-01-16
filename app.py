@@ -20,6 +20,7 @@ db = []
 @app.post("/post-image_notes/")
 async def image_notes(*,file: UploadFile = File(...), subject : str ):
     contents = await file.read() 
+    
     db.append(file)
     db.append(subject)
     with open(file.filename, "wb") as f:
