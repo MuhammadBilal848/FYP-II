@@ -11,7 +11,6 @@ endpoint = credential['ENDPOINT']
 
 computervision_client = ComputerVisionClient(endpoint, CognitiveServicesCredentials(subscription_key))
 
-# Replace the file_path with the path to your locally saved image
 file_path = '2.jpg'
 
 with open(file_path, "rb") as image_stream:
